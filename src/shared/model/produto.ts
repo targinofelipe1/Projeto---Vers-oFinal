@@ -7,11 +7,11 @@ export class Produto {
   contato: string;
 
   constructor(
-    logo: string,
-    nome: string,
-    localizacao: string,
-    avaliacao: number,
-    contato: string
+      logo: string,
+      nome: string,
+      localizacao: string,
+      avaliacao: number,
+      contato: string
   ) {
     this.logo = logo;
     this.nome = nome;
@@ -19,4 +19,6 @@ export class Produto {
     this.avaliacao = avaliacao;
     this.contato = contato;
   }
+
+
 }

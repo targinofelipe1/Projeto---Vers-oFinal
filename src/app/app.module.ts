@@ -13,7 +13,7 @@ import {LayoutModule} from './layout/layout.module';
 import {CadastrarComponent} from './produto/cadastrar/cadastrar.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ListagemComponent} from './produto/listagem/listagem.component';
-import {FirestoreModule} from "./firestore/firestore.module";
+
 
 
 @NgModule({
@@ -30,7 +30,6 @@ import {FirestoreModule} from "./firestore/firestore.module";
         MatCardModule,
         LayoutModule,
         HttpClientModule,
-        FirestoreModule,
     ],
     exports: [CadastrarComponent, ListagemComponent],
     bootstrap: [AppComponent],

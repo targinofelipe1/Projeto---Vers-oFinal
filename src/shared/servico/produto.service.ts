@@ -7,19 +7,19 @@ import { Produto } from '../model/produto';
   providedIn: 'root',
 })
 export class ProdutoService {
-  URL_Produtos = 'http://localhost:3000/produtos';
+  urlProdutos = 'http://localhost:3000/produtos';
 
   constructor(private clienteHttp: HttpClient) {}
 
   listar(): Observable<Produto[]> {
-    return this.clienteHttp.get<Produto[]>(this.URL_Produtos);
+    return this.clienteHttp.get<Produto[]>(this.urlProdutos);
   }
 
   inserir(novoProduto: Produto): Observable<Produto> {
-    return this.clienteHttp.post<Produto>(this.URL_Produtos, novoProduto);
+    return this.clienteHttp.post<Produto>(this.urlProdutos, novoProduto);
   }
 
   apagar(id: number): Observable<object> {
-    return this.clienteHttp.delete(`${this.URL_Produtos}/${id}`);
+    return this.clienteHttp.delete(`${this.urlProdutos}/${id}`);
   }
 }

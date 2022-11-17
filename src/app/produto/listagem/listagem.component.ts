@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Produto} from '../../../shared/model/produto';
 import {ProdutoService} from '../../../shared/servico/produto.service';
-import {ProdutoFirebaseService} from "../../../shared/servico/produto-firebase.service";
 
 @Component({
     selector: 'app-listagem',
@@ -11,12 +10,12 @@ import {ProdutoFirebaseService} from "../../../shared/servico/produto-firebase.s
 export class ListagemComponent implements OnInit {
     produtos: Produto[];
 
-    constructor(private produtoService: ProdutoService, private produtoFireBaseService: ProdutoFirebaseService) {
+    constructor(private produtoService: ProdutoService) {
         this.produtos = new Array<Produto>();
     }
 
     ngOnInit(): void {
-        this.produtoFireBaseService.listar().subscribe(
+        this.produtoService.listar().subscribe(
             (produtoRetornados) => (this.produtos = produtoRetornados)
         );
     }

@@ -1,0 +1,13 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "logo": "https:",
+      "nome": "teste",
+      "localizacao": "João Pessoa",
+      "avaliacao": 10,
+      "contato": "teste"
+    }
+  ]
+
+}
