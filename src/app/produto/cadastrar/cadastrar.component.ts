@@ -17,7 +17,7 @@ export class CadastrarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  inserirProduto() {
+  inserirProduto()  {
     if (this.inserindo) {
       this.produtoService
         .inserir(this.produto)
@@ -28,6 +28,5 @@ export class CadastrarComponent implements OnInit {
 
   inicio(): void {
     console.log('Digitando');
-    ;
   }
 }

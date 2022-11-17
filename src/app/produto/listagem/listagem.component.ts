@@ -1,36 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { Produto } from '../../../shared/model/produto';
-import { ProdutoService } from '../../../shared/servico/produto.service';
+import {Component, OnInit} from '@angular/core';
+import {Produto} from '../../../shared/model/produto';
+import {ProdutoService} from '../../../shared/servico/produto.service';
+import {ProdutoFirebaseService} from "../../../shared/servico/produto-firebase.service";
 
 @Component({
-  selector: 'app-listagem',
-  templateUrl: './listagem.component.html',
-  styleUrls: ['./listagem.component.scss'],
+    selector: 'app-listagem',
+    templateUrl: './listagem.component.html',
+    styleUrls: ['./listagem.component.scss'],
 })
 export class ListagemComponent implements OnInit {
-  produtos: Produto[];
-  constructor(private ProdutoService: ProdutoService) {
-    this.produtos = new Array<Produto>();
-  }
+    produtos: Produto[];
 
-  ngOnInit(): void {
-    this.ProdutoService.listar().subscribe(
-      (produtoRetornados) => (this.produtos = produtoRetornados)
-    );
-  }
+    constructor(private produtoService: ProdutoService, private produtoFireBaseService: ProdutoFirebaseService) {
+        this.produtos = new Array<Produto>();
+    }
 
-  removerProduto(produtoRemover: Produto): void {
-    console.log(produtoRemover)
-    this.ProdutoService.apagar(produtoRemover.id).subscribe(
-      removido => {
-        console.log(removido);
-        const indxProduto = this.produtos.findIndex(u => u.id === produtoRemover.id);
+    ngOnInit(): void {
+        this.produtoFireBaseService.listar().subscribe(
+            (produtoRetornados) => (this.produtos = produtoRetornados)
+        );
+    }
 
-        if (indxProduto > -1) {
-          this.produtos.splice(indxProduto, 1);
-        }
+    removerProduto(produtoRemover: Produto): void {
+        this.produtoService.apagar(produtoRemover.id || 0).subscribe(
+            removido => {
+                console.log(removido);
+                const indxProduto = this.produtos.findIndex(u => u.id === produtoRemover.id);
 
-      }
-    );
-  }
+                if (indxProduto > -1) {
+                    this.produtos.splice(indxProduto, 1);
+                }
+
+            }
+        );
+    }
 }
